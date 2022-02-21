@@ -9,9 +9,10 @@
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                <TextBox Margin="10" Width="300" Text="Введите текст для поиска"/>
+                <TextBox Margin="10" Width="300" Text="Введите текст для поиска" x:Name="TextBoxSearch" PreviewTextInput="TextBoxSearch_PreviewTextInput"/>
                 <ComboBox Margin="10" Width="150" Text="Сортировка"/>
                 <ComboBox Margin="10" Width="150" Text="Фильтрация"/>
+                <Button x:Name="endbtn" Width="20" Height="20" Click="endbtn_Click"/>
             </StackPanel>
             <ListView Name="ProductList" Width="650" Height="300">
                 <ListView.ItemTemplate>
@@ -51,14 +52,14 @@
             </ListView>
             <StackPanel Orientation="Horizontal" Height="50" HorizontalAlignment="Right" Margin="0,0,75,0">
                 <Button x:Name="LeftBtn" Content="&lt;" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
-                <Button x:Name="FirstBtn" BorderThickness="0" Background="White" Width="40" Height="40">
+                <Button x:Name="FirstBtn" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click">
                     <Button.Content>
                         <TextBlock><Underline>1</Underline></TextBlock>
                     </Button.Content>
                 </Button>
-                <Button x:Name="SecondBtn" Content="2" BorderThickness="0" Background="White" Width="40" Height="40"/>
-                <Button x:Name="ThirdBtn" Content="3" BorderThickness="0" Background="White" Width="40" Height="40"/>
-                <Button x:Name="RightBtn" Content=">" BorderThickness="0" Background="White" Width="40" Height="40"/>
+                <Button x:Name="SecondBtn" Content="2" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
+                <Button x:Name="ThirdBtn" Content="3" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
+                <Button x:Name="RightBtn" Content=">" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
