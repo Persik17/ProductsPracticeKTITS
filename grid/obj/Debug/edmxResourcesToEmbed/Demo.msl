@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DemoModelContainer" CdmEntityContainer="DemoEntities">
+    <EntitySetMapping Name="Agent_PontOfSales">
+      <EntityTypeMapping TypeName="DemoModel.Agent_PontOfSales">
+        <MappingFragment StoreEntitySet="Agent_PontOfSales">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPointOfSales" ColumnName="IdPointOfSales" />
+          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgentType">
+      <EntityTypeMapping TypeName="DemoModel.AgentType">
+        <MappingFragment StoreEntitySet="AgentType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bank">
+      <EntityTypeMapping TypeName="DemoModel.Bank">
+        <MappingFragment StoreEntitySet="Bank">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Inn" ColumnName="Inn" />
+          <ScalarProperty Name="Kpp" ColumnName="Kpp" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Card">
+      <EntityTypeMapping TypeName="DemoModel.Card">
+        <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="DemoModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="DemoModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+          <ScalarProperty Name="IdAgentType" ColumnName="IdAgentType" />
+          <ScalarProperty Name="IdCompanyAgent" ColumnName="IdCompanyAgent" />
+          <ScalarProperty Name="JurAddressAgent" ColumnName="JurAddressAgent" />
+          <ScalarProperty Name="InnAgent" ColumnName="InnAgent" />
+          <ScalarProperty Name="KppAgent" ColumnName="KppAgent" />
+          <ScalarProperty Name="DirectorsFullName" ColumnName="DirectorsFullName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LogoAgent" ColumnName="LogoAgent" />
+          <ScalarProperty Name="IdPriorityAgent" ColumnName="IdPriorityAgent" />
+          <ScalarProperty Name="IsNewAgent" ColumnName="IsNewAgent" />
+          <ScalarProperty Name="IdPassport" ColumnName="IdPassport" />
+          <ScalarProperty Name="IsMaried" ColumnName="IsMaried" />
+          <ScalarProperty Name="IsDesabled" ColumnName="IsDesabled" />
+          <ScalarProperty Name="CountChildren" ColumnName="CountChildren" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee_Bank">
+      <EntityTypeMapping TypeName="DemoModel.Employee_Bank">
+        <MappingFragment StoreEntitySet="Employee_Bank">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+          <ScalarProperty Name="IdBank" ColumnName="IdBank" />
+          <ScalarProperty Name="Bik" ColumnName="Bik" />
+          <ScalarProperty Name="KorAccount" ColumnName="KorAccount" />
+          <ScalarProperty Name="Inn" ColumnName="Inn" />
+          <ScalarProperty Name="Kpp" ColumnName="Kpp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee_Equipment">
+      <EntityTypeMapping TypeName="DemoModel.Employee_Equipment">
+        <MappingFragment StoreEntitySet="Employee_Equipment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdEquipment" ColumnName="IdEquipment" />
+          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeType">
+      <EntityTypeMapping TypeName="DemoModel.EmployeeType">
+        <MappingFragment StoreEntitySet="EmployeeType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="DemoModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="DemoModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryAgentSales">
+      <EntityTypeMapping TypeName="DemoModel.HistoryAgentSales">
+        <MappingFragment StoreEntitySet="HistoryAgentSales">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+          <ScalarProperty Name="IdOffer" ColumnName="IdOffer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryCountMaterial">
+      <EntityTypeMapping TypeName="DemoModel.HistoryCountMaterial">
+        <MappingFragment StoreEntitySet="HistoryCountMaterial">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="OldCount" ColumnName="OldCount" />
+          <ScalarProperty Name="NewCount" ColumnName="NewCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryMinCostProductForAgent">
+      <EntityTypeMapping TypeName="DemoModel.HistoryMinCostProductForAgent">
+        <MappingFragment StoreEntitySet="HistoryMinCostProductForAgent">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+          <ScalarProperty Name="OldCost" ColumnName="OldCost" />
+          <ScalarProperty Name="NewCost" ColumnName="NewCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistorySupplyMaterial">
+      <EntityTypeMapping TypeName="DemoModel.HistorySupplyMaterial">
+        <MappingFragment StoreEntitySet="HistorySupplyMaterial">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdSupplyMaterial" ColumnName="IdSupplyMaterial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventory">
+      <EntityTypeMapping TypeName="DemoModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="CountInStorage" ColumnName="CountInStorage" />
+          <ScalarProperty Name="CountActual" ColumnName="CountActual" />
+          <ScalarProperty Name="InventoryDate" ColumnName="InventoryDate" />
+          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Material">
+      <EntityTypeMapping TypeName="DemoModel.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMaterialType" ColumnName="IdMaterialType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CountInPack" ColumnName="CountInPack" />
+          <ScalarProperty Name="IdMeasure" ColumnName="IdMeasure" />
+          <ScalarProperty Name="CountInStorage" ColumnName="CountInStorage" />
+          <ScalarProperty Name="MinCount" ColumnName="MinCount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialType">
+      <EntityTypeMapping TypeName="DemoModel.MaterialType">
+        <MappingFragment StoreEntitySet="MaterialType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MeasureType">
+      <EntityTypeMapping TypeName="DemoModel.MeasureType">
+        <MappingFragment StoreEntitySet="MeasureType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passport">
+      <EntityTypeMapping TypeName="DemoModel.Passport">
+        <MappingFragment StoreEntitySet="Passport">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Middlename" ColumnName="Middlename" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="LivingAddress" ColumnName="LivingAddress" />
+          <ScalarProperty Name="Series" ColumnName="Series" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DivisionCode" ColumnName="DivisionCode" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PointOfSales">
+      <EntityTypeMapping TypeName="DemoModel.PointOfSales">
+        <MappingFragment StoreEntitySet="PointOfSales">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PriorityType">
+      <EntityTypeMapping TypeName="DemoModel.PriorityType">
+        <MappingFragment StoreEntitySet="PriorityType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="DemoModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdProductType" ColumnName="IdProductType" />
+          <ScalarProperty Name="ArticleNumber" ColumnName="ArticleNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="MinCostForAgent" ColumnName="MinCostForAgent" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="WeightWithPack" ColumnName="WeightWithPack" />
+          <ScalarProperty Name="WeightWithoutPack" ColumnName="WeightWithoutPack" />
+          <ScalarProperty Name="QualitySertificate" ColumnName="QualitySertificate" />
+          <ScalarProperty Name="StandartNumber" ColumnName="StandartNumber" />
+          <ScalarProperty Name="CountPeopleForProduction" ColumnName="CountPeopleForProduction" />
+          <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Production">
+      <EntityTypeMapping TypeName="DemoModel.Production">
+        <MappingFragment StoreEntitySet="Production">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdProductionFromOffer" ColumnName="IdProductionFromOffer" />
+          <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+          <ScalarProperty Name="ProductionTime" ColumnName="ProductionTime" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductType">
+      <EntityTypeMapping TypeName="DemoModel.ProductType">
+        <MappingFragment StoreEntitySet="ProductType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Request">
+      <EntityTypeMapping TypeName="DemoModel.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdAgent" ColumnName="IdAgent" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IdRequestProduct" ColumnName="IdRequestProduct" />
+          <ScalarProperty Name="IdRequestStage" ColumnName="IdRequestStage" />
+          <ScalarProperty Name="IsPayed" ColumnName="IsPayed" />
+          <ScalarProperty Name="DateOfRequest" ColumnName="DateOfRequest" />
+          <ScalarProperty Name="IsDelivery" ColumnName="IsDelivery" />
+          <ScalarProperty Name="IdManager" ColumnName="IdManager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Request_Product">
+      <EntityTypeMapping TypeName="DemoModel.Request_Product">
+        <MappingFragment StoreEntitySet="Request_Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
+          <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestStageType">
+      <EntityTypeMapping TypeName="DemoModel.RequestStageType">
+        <MappingFragment StoreEntitySet="RequestStageType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="DemoModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supplier">
+      <EntityTypeMapping TypeName="DemoModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Inn" ColumnName="Inn" />
+          <ScalarProperty Name="Kpp" ColumnName="Kpp" />
+          <ScalarProperty Name="IdSupplierType" ColumnName="IdSupplierType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplierType">
+      <EntityTypeMapping TypeName="DemoModel.SupplierType">
+        <MappingFragment StoreEntitySet="SupplierType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplyMaterial">
+      <EntityTypeMapping TypeName="DemoModel.SupplyMaterial">
+        <MappingFragment StoreEntitySet="SupplyMaterial">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+          <ScalarProperty Name="IdSupplier" ColumnName="IdSupplier" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="IsDelivery" ColumnName="IsDelivery" />
+          <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DemoModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Turnstile">
+      <EntityTypeMapping TypeName="DemoModel.Turnstile">
+        <MappingFragment StoreEntitySet="Turnstile">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="DateTimeArrivel" ColumnName="DateTimeArrivel" />
+          <ScalarProperty Name="DateTimeDeparture" ColumnName="DateTimeDeparture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="DemoModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workshop">
+      <EntityTypeMapping TypeName="DemoModel.Workshop">
+        <MappingFragment StoreEntitySet="Workshop">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

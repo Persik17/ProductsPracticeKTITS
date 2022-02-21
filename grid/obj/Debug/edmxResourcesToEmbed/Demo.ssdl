@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище DemoModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Agent_PontOfSales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPointOfSales" Type="int" />
+    <Property Name="IdEmployee" Type="int" />
+  </EntityType>
+  <EntityType Name="AgentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Inn" Type="varchar" MaxLength="20" />
+    <Property Name="Kpp" Type="varchar" MaxLength="30" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="Code" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmployee" Type="int" />
+    <Property Name="Number" Type="int" />
+    <Property Name="Code" Type="int" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="40" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmployee" Type="int" />
+    <Property Name="IdAgentType" Type="int" />
+    <Property Name="IdCompanyAgent" Type="int" />
+    <Property Name="JurAddressAgent" Type="varchar(max)" />
+    <Property Name="InnAgent" Type="varchar" MaxLength="25" />
+    <Property Name="KppAgent" Type="varchar" MaxLength="25" />
+    <Property Name="DirectorsFullName" Type="varchar(max)" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+    <Property Name="Email" Type="varchar" MaxLength="45" />
+    <Property Name="LogoAgent" Type="varchar(max)" />
+    <Property Name="IdPriorityAgent" Type="int" />
+    <Property Name="IsNewAgent" Type="bit" />
+    <Property Name="IdPassport" Type="int" />
+    <Property Name="IsMaried" Type="bit" />
+    <Property Name="IsDesabled" Type="bit" />
+    <Property Name="CountChildren" Type="int" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Employee_Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmployee" Type="int" />
+    <Property Name="IdBank" Type="int" />
+    <Property Name="Bik" Type="varchar" MaxLength="25" />
+    <Property Name="KorAccount" Type="varchar" MaxLength="25" />
+    <Property Name="Inn" Type="varchar" MaxLength="25" />
+    <Property Name="Kpp" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="Employee_Equipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEquipment" Type="int" />
+    <Property Name="IdEmployee" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="HistoryAgentSales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmployee" Type="int" />
+    <Property Name="IdOffer" Type="int" />
+  </EntityType>
+  <EntityType Name="HistoryCountMaterial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMaterial" Type="int" />
+    <Property Name="OldCount" Type="int" />
+    <Property Name="NewCount" Type="int" />
+  </EntityType>
+  <EntityType Name="HistoryMinCostProductForAgent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProduct" Type="int" />
+    <Property Name="OldCost" Type="money" />
+    <Property Name="NewCost" Type="money" />
+  </EntityType>
+  <EntityType Name="HistorySupplyMaterial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdSupplyMaterial" Type="int" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMaterial" Type="int" />
+    <Property Name="CountInStorage" Type="int" />
+    <Property Name="CountActual" Type="int" />
+    <Property Name="InventoryDate" Type="date" />
+    <Property Name="IdEmployee" Type="int" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMaterialType" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="CountInPack" Type="int" />
+    <Property Name="IdMeasure" Type="int" />
+    <Property Name="CountInStorage" Type="int" />
+    <Property Name="MinCount" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Image" Type="varchar(max)" />
+    <Property Name="Cost" Type="money" />
+  </EntityType>
+  <EntityType Name="MaterialType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="MeasureType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Passport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="45" />
+    <Property Name="Surname" Type="varchar" MaxLength="45" />
+    <Property Name="Middlename" Type="varchar" MaxLength="45" />
+    <Property Name="BirthDay" Type="date" />
+    <Property Name="LivingAddress" Type="varchar" MaxLength="45" />
+    <Property Name="Series" Type="varchar" MaxLength="10" />
+    <Property Name="Number" Type="varchar" MaxLength="10" />
+    <Property Name="DivisionCode" Type="varchar" MaxLength="10" />
+    <Property Name="ExpiryDate" Type="date" />
+    <Property Name="IssueDate" Type="date" />
+    <Property Name="IdGender" Type="int" />
+  </EntityType>
+  <EntityType Name="PointOfSales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="35" />
+    <Property Name="Description" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="PriorityType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProductType" Type="int" />
+    <Property Name="ArticleNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Image" Type="varchar(max)" />
+    <Property Name="MinCostForAgent" Type="money" />
+    <Property Name="Height" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Width" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Length" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="WeightWithPack" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="WeightWithoutPack" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="QualitySertificate" Type="varchar(max)" />
+    <Property Name="StandartNumber" Type="varchar" MaxLength="30" />
+    <Property Name="CountPeopleForProduction" Type="int" />
+    <Property Name="IdWorkshop" Type="int" />
+  </EntityType>
+  <EntityType Name="Production">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProductionFromOffer" Type="int" />
+    <Property Name="IdProduct" Type="int" />
+    <Property Name="Count" Type="int" />
+    <Property Name="CostPrice" Type="money" />
+    <Property Name="ProductionTime" Type="time" Precision="7" />
+    <Property Name="IdMaterial" Type="int" />
+    <Property Name="IdRequest" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAgent" Type="int" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="IdRequestProduct" Type="int" />
+    <Property Name="IdRequestStage" Type="int" />
+    <Property Name="IsPayed" Type="bit" />
+    <Property Name="DateOfRequest" Type="date" />
+    <Property Name="IsDelivery" Type="bit" />
+    <Property Name="IdManager" Type="int" />
+  </EntityType>
+  <EntityType Name="Request_Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRequest" Type="int" />
+    <Property Name="IdProduct" Type="int" />
+    <Property Name="Count" Type="int" />
+  </EntityType>
+  <EntityType Name="RequestStageType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Inn" Type="varchar" MaxLength="25" />
+    <Property Name="Kpp" Type="varchar" MaxLength="25" />
+    <Property Name="IdSupplierType" Type="int" />
+  </EntityType>
+  <EntityType Name="SupplierType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="SupplyMaterial">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMaterial" Type="int" />
+    <Property Name="IdSupplier" Type="int" />
+    <Property Name="Cost" Type="money" />
+    <Property Name="DeliveryDate" Type="date" />
+    <Property Name="IsDelivery" Type="bit" />
+    <Property Name="IdEmployee" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Turnstile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCard" Type="int" />
+    <Property Name="DateTimeArrivel" Type="date" />
+    <Property Name="DateTimeDeparture" Type="date" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="80" />
+    <Property Name="Password" Type="varchar" MaxLength="30" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="Workshop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="int" />
+    <Property Name="Description" Type="varchar" MaxLength="60" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <Association Name="FK_Agent_PontOfSales_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Agent_PontOfSales" Type="Self.Agent_PontOfSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Agent_PontOfSales">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Agent_PontOfSales_PointOfSales">
+    <End Role="PointOfSales" Type="Self.PointOfSales" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Agent_PontOfSales" Type="Self.Agent_PontOfSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PointOfSales">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Agent_PontOfSales">
+        <PropertyRef Name="IdPointOfSales" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Card_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_AgentType">
+    <End Role="AgentType" Type="Self.AgentType" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgentType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="IdAgentType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Bank_Bank">
+    <End Role="Bank" Type="Self.Bank" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee_Bank" Type="Self.Employee_Bank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Bank">
+        <PropertyRef Name="IdBank" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Bank_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee_Bank" Type="Self.Employee_Bank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Bank">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="IdCompanyAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_EmployeeType">
+    <End Role="EmployeeType" Type="Self.EmployeeType" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Equipment_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee_Equipment" Type="Self.Employee_Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Equipment">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Equipment_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee_Equipment" Type="Self.Employee_Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee_Equipment">
+        <PropertyRef Name="IdEquipment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Passport">
+    <End Role="Passport" Type="Self.Passport" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="IdPassport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_PriorityType">
+    <End Role="PriorityType" Type="Self.PriorityType" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriorityType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="IdPriorityAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistoryAgentSales_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="HistoryAgentSales" Type="Self.HistoryAgentSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistoryAgentSales">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistoryCountMaterial_Material">
+    <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+    <End Role="HistoryCountMaterial" Type="Self.HistoryCountMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistoryCountMaterial">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistoryMinCostProductForAgent_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="HistoryMinCostProductForAgent" Type="Self.HistoryMinCostProductForAgent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistoryMinCostProductForAgent">
+        <PropertyRef Name="IdProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorySupplyMaterial_SupplyMaterial">
+    <End Role="SupplyMaterial" Type="Self.SupplyMaterial" Multiplicity="0..1" />
+    <End Role="HistorySupplyMaterial" Type="Self.HistorySupplyMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplyMaterial">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HistorySupplyMaterial">
+        <PropertyRef Name="IdSupplyMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inventory_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inventory_Material">
+    <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Material_MaterialType">
+    <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="0..1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="IdMaterialType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Material_MeasureType">
+    <End Role="MeasureType" Type="Self.MeasureType" Multiplicity="0..1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MeasureType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="IdMeasure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Passport_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Passport" Type="Self.Passport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Passport">
+        <PropertyRef Name="IdGender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductType">
+    <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IdProductType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Workshop">
+    <End Role="Workshop" Type="Self.Workshop" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workshop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IdWorkshop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Production_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Production" Type="Self.Production" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Production">
+        <PropertyRef Name="IdProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Production_Request">
+    <End Role="Request" Type="Self.Request" Multiplicity="0..1" />
+    <End Role="Production" Type="Self.Production" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Request">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Production">
+        <PropertyRef Name="IdRequest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="IdAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_Employee1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="IdManager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_Product_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Request_Product" Type="Self.Request_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request_Product">
+        <PropertyRef Name="IdProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_Product_Request">
+    <End Role="Request" Type="Self.Request" Multiplicity="0..1" />
+    <End Role="Request_Product" Type="Self.Request_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Request">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request_Product">
+        <PropertyRef Name="IdRequest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Request_RequestStageType">
+    <End Role="RequestStageType" Type="Self.RequestStageType" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RequestStageType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="IdRequestStage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_SupplierType">
+    <End Role="SupplierType" Type="Self.SupplierType" Multiplicity="0..1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SupplierType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="IdSupplierType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyMaterial_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="SupplyMaterial" Type="Self.SupplyMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SupplyMaterial">
+        <PropertyRef Name="IdEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyMaterial_Material">
+    <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+    <End Role="SupplyMaterial" Type="Self.SupplyMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SupplyMaterial">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SupplyMaterial_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="SupplyMaterial" Type="Self.SupplyMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SupplyMaterial">
+        <PropertyRef Name="IdSupplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Turnstile_Card">
+    <End Role="Card" Type="Self.Card" Multiplicity="0..1" />
+    <End Role="Turnstile" Type="Self.Turnstile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Turnstile">
+        <PropertyRef Name="IdCard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище DemoModelContainer">
+    <EntitySet Name="Agent_PontOfSales" EntityType="Self.Agent_PontOfSales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AgentType" EntityType="Self.AgentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee_Bank" EntityType="Self.Employee_Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee_Equipment" EntityType="Self.Employee_Equipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeType" EntityType="Self.EmployeeType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoryAgentSales" EntityType="Self.HistoryAgentSales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoryCountMaterial" EntityType="Self.HistoryCountMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistoryMinCostProductForAgent" EntityType="Self.HistoryMinCostProductForAgent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistorySupplyMaterial" EntityType="Self.HistorySupplyMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaterialType" EntityType="Self.MaterialType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MeasureType" EntityType="Self.MeasureType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PointOfSales" EntityType="Self.PointOfSales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PriorityType" EntityType="Self.PriorityType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Production" EntityType="Self.Production" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Request_Product" EntityType="Self.Request_Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RequestStageType" EntityType="Self.RequestStageType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplierType" EntityType="Self.SupplierType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SupplyMaterial" EntityType="Self.SupplyMaterial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Turnstile" EntityType="Self.Turnstile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Workshop" EntityType="Self.Workshop" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Agent_PontOfSales_Employee" Association="Self.FK_Agent_PontOfSales_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Agent_PontOfSales" EntitySet="Agent_PontOfSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Agent_PontOfSales_PointOfSales" Association="Self.FK_Agent_PontOfSales_PointOfSales">
+      <End Role="PointOfSales" EntitySet="PointOfSales" />
+      <End Role="Agent_PontOfSales" EntitySet="Agent_PontOfSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Card_Employee" Association="Self.FK_Card_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Card" EntitySet="Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_AgentType" Association="Self.FK_Employee_AgentType">
+      <End Role="AgentType" EntitySet="AgentType" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Bank_Bank" Association="Self.FK_Employee_Bank_Bank">
+      <End Role="Bank" EntitySet="Bank" />
+      <End Role="Employee_Bank" EntitySet="Employee_Bank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Bank_Employee" Association="Self.FK_Employee_Bank_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Employee_Bank" EntitySet="Employee_Bank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Company" Association="Self.FK_Employee_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_EmployeeType" Association="Self.FK_Employee_EmployeeType">
+      <End Role="EmployeeType" EntitySet="EmployeeType" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Equipment_Employee" Association="Self.FK_Employee_Equipment_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Employee_Equipment" EntitySet="Employee_Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Equipment_Equipment" Association="Self.FK_Employee_Equipment_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="Employee_Equipment" EntitySet="Employee_Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Passport" Association="Self.FK_Employee_Passport">
+      <End Role="Passport" EntitySet="Passport" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_PriorityType" Association="Self.FK_Employee_PriorityType">
+      <End Role="PriorityType" EntitySet="PriorityType" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistoryAgentSales_Employee" Association="Self.FK_HistoryAgentSales_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="HistoryAgentSales" EntitySet="HistoryAgentSales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistoryCountMaterial_Material" Association="Self.FK_HistoryCountMaterial_Material">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="HistoryCountMaterial" EntitySet="HistoryCountMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistoryMinCostProductForAgent_Product" Association="Self.FK_HistoryMinCostProductForAgent_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="HistoryMinCostProductForAgent" EntitySet="HistoryMinCostProductForAgent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorySupplyMaterial_SupplyMaterial" Association="Self.FK_HistorySupplyMaterial_SupplyMaterial">
+      <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
+      <End Role="HistorySupplyMaterial" EntitySet="HistorySupplyMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inventory_Employee" Association="Self.FK_Inventory_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Inventory" EntitySet="Inventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inventory_Material" Association="Self.FK_Inventory_Material">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="Inventory" EntitySet="Inventory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Material_MaterialType" Association="Self.FK_Material_MaterialType">
+      <End Role="MaterialType" EntitySet="MaterialType" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Material_MeasureType" Association="Self.FK_Material_MeasureType">
+      <End Role="MeasureType" EntitySet="MeasureType" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Passport_Gender" Association="Self.FK_Passport_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Passport" EntitySet="Passport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+      <End Role="ProductType" EntitySet="ProductType" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Workshop" Association="Self.FK_Product_Workshop">
+      <End Role="Workshop" EntitySet="Workshop" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Production_Product" Association="Self.FK_Production_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Production" EntitySet="Production" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Production_Request" Association="Self.FK_Production_Request">
+      <End Role="Request" EntitySet="Request" />
+      <End Role="Production" EntitySet="Production" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_Employee" Association="Self.FK_Request_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_Employee1" Association="Self.FK_Request_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_Product_Product" Association="Self.FK_Request_Product_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Request_Product" EntitySet="Request_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_Product_Request" Association="Self.FK_Request_Product_Request">
+      <End Role="Request" EntitySet="Request" />
+      <End Role="Request_Product" EntitySet="Request_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Request_RequestStageType" Association="Self.FK_Request_RequestStageType">
+      <End Role="RequestStageType" EntitySet="RequestStageType" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_SupplierType" Association="Self.FK_Supplier_SupplierType">
+      <End Role="SupplierType" EntitySet="SupplierType" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyMaterial_Employee" Association="Self.FK_SupplyMaterial_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyMaterial_Material" Association="Self.FK_SupplyMaterial_Material">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SupplyMaterial_Supplier" Association="Self.FK_SupplyMaterial_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Turnstile_Card" Association="Self.FK_Turnstile_Card">
+      <End Role="Card" EntitySet="Card" />
+      <End Role="Turnstile" EntitySet="Turnstile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
