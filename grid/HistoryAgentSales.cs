@@ -16,8 +16,11 @@ namespace grid
     {
         public int Id { get; set; }
         public Nullable<int> IdEmployee { get; set; }
-        public Nullable<int> IdOffer { get; set; }
+        public Nullable<int> IdRequest { get; set; }
     
         public virtual Employee Employee { get; set; }
+        public virtual HistoryAgentSales HistoryAgentSales1 { get; set; }
+        public virtual HistoryAgentSales HistoryAgentSales2 { get; set; }
+        public virtual Request_Product Request_Product { get; set; }
     }
 }

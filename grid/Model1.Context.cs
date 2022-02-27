@@ -13,10 +13,10 @@ namespace grid
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DemoEnt : DbContext
+    public partial class DemoEntities4 : DbContext
     {
-        public DemoEnt()
-            : base("name=DemoEnt")
+        public DemoEntities4()
+            : base("name=DemoEntities4")
         {
         }
     
@@ -40,6 +40,7 @@ namespace grid
         public virtual DbSet<HistoryCountMaterial> HistoryCountMaterial { get; set; }
         public virtual DbSet<HistoryMinCostProductForAgent> HistoryMinCostProductForAgent { get; set; }
         public virtual DbSet<HistorySupplyMaterial> HistorySupplyMaterial { get; set; }
+        public virtual DbSet<Image> Image { get; set; }
         public virtual DbSet<Inventory> Inventory { get; set; }
         public virtual DbSet<Material> Material { get; set; }
         public virtual DbSet<MaterialType> MaterialType { get; set; }
@@ -60,6 +61,5 @@ namespace grid
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Turnstile> Turnstile { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Workshop> Workshop { get; set; }
     }
 }

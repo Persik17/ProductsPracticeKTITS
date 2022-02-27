@@ -22,3 +22,12 @@ C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\bin\Debug\ru\EntityFra
 C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\grid.csproj.CopyComplete
 C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\ProductPage.g.cs
 C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\ProductPage.baml
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\AddEditProductPage.g.cs
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\AddEditProductPage.baml
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\AddImagePage.g.cs
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\AddMaterialPage.g.cs
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\AddImagePage.baml
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\AddMaterialPage.baml
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\EditCostProducts.g.cs
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\Pages\EditCostProducts.baml
+C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\obj\Debug\App.baml

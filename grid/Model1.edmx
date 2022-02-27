@@ -119,7 +119,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdEmployee" Type="int" />
-          <Property Name="IdOffer" Type="int" />
+          <Property Name="IdRequest" Type="int" />
         </EntityType>
         <EntityType Name="HistoryCountMaterial">
           <Key>
@@ -145,6 +145,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdSupplyMaterial" Type="int" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Source" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -227,7 +234,6 @@
           <Property Name="ArticleNumber" Type="varchar" MaxLength="20" />
           <Property Name="Name" Type="varchar" MaxLength="30" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="Image" Type="varchar(max)" />
           <Property Name="MinCostForAgent" Type="money" />
           <Property Name="Height" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Width" Type="decimal" Precision="5" Scale="2" />
@@ -237,7 +243,8 @@
           <Property Name="QualitySertificate" Type="varchar(max)" />
           <Property Name="StandartNumber" Type="varchar" MaxLength="30" />
           <Property Name="CountPeopleForProduction" Type="int" />
-          <Property Name="IdWorkshop" Type="int" />
+          <Property Name="Workshop" Type="int" />
+          <Property Name="Image" Type="int" />
         </EntityType>
         <EntityType Name="Production">
           <Key>
@@ -353,16 +360,31 @@
           <Property Name="Password" Type="varchar" MaxLength="30" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
-        <EntityType Name="Workshop">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Number" Type="int" />
-          <Property Name="Description" Type="varchar" MaxLength="60" />
-          <Property Name="Name" Type="varchar" MaxLength="30" />
-        </EntityType>
-        <Association Name="FK__Productio__IdPro__25518C17">
+        <Association Name="FK__Product__IdProdu__2CF2ADDF">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="IdProductType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Image__2DE6D218">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Image" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Productio__IdPro__2EDAF651">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Production" Type="Self.Production" Multiplicity="*" />
           <ReferentialConstraint>
@@ -560,6 +582,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HistoryAgentSales_HistoryAgentSales">
+          <End Role="HistoryAgentSales" Type="Self.HistoryAgentSales" Multiplicity="1" />
+          <End Role="HistoryAgentSales1" Type="Self.HistoryAgentSales" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HistoryAgentSales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryAgentSales1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryAgentSales_Request_Product">
+          <End Role="Request_Product" Type="Self.Request_Product" Multiplicity="0..1" />
+          <End Role="HistoryAgentSales" Type="Self.HistoryAgentSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryAgentSales">
+              <PropertyRef Name="IdRequest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HistoryCountMaterial_Material">
           <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
           <End Role="HistoryCountMaterial" Type="Self.HistoryCountMaterial" Multiplicity="*" />
@@ -653,30 +699,6 @@
             </Principal>
             <Dependent Role="Passport">
               <PropertyRef Name="IdGender" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_ProductType">
-          <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IdProductType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Workshop">
-          <End Role="Workshop" Type="Self.Workshop" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Workshop">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IdWorkshop" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -852,6 +874,7 @@
           <EntitySet Name="HistoryCountMaterial" EntityType="Self.HistoryCountMaterial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistoryMinCostProductForAgent" EntityType="Self.HistoryMinCostProductForAgent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistorySupplyMaterial" EntityType="Self.HistorySupplyMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialType" EntityType="Self.MaterialType" Schema="dbo" store:Type="Tables" />
@@ -872,8 +895,15 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Turnstile" EntityType="Self.Turnstile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Workshop" EntityType="Self.Workshop" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Productio__IdPro__25518C17" Association="Self.FK__Productio__IdPro__25518C17">
+          <AssociationSet Name="FK__Product__IdProdu__2CF2ADDF" Association="Self.FK__Product__IdProdu__2CF2ADDF">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Image__2DE6D218" Association="Self.FK__Product__Image__2DE6D218">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Productio__IdPro__2EDAF651" Association="Self.FK__Productio__IdPro__2EDAF651">
             <End Role="Product" EntitySet="Product" />
             <End Role="Production" EntitySet="Production" />
           </AssociationSet>
@@ -933,6 +963,14 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="HistoryAgentSales" EntitySet="HistoryAgentSales" />
           </AssociationSet>
+          <AssociationSet Name="FK_HistoryAgentSales_HistoryAgentSales" Association="Self.FK_HistoryAgentSales_HistoryAgentSales">
+            <End Role="HistoryAgentSales" EntitySet="HistoryAgentSales" />
+            <End Role="HistoryAgentSales1" EntitySet="HistoryAgentSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryAgentSales_Request_Product" Association="Self.FK_HistoryAgentSales_Request_Product">
+            <End Role="Request_Product" EntitySet="Request_Product" />
+            <End Role="HistoryAgentSales" EntitySet="HistoryAgentSales" />
+          </AssociationSet>
           <AssociationSet Name="FK_HistoryCountMaterial_Material" Association="Self.FK_HistoryCountMaterial_Material">
             <End Role="Material" EntitySet="Material" />
             <End Role="HistoryCountMaterial" EntitySet="HistoryCountMaterial" />
@@ -964,14 +1002,6 @@
           <AssociationSet Name="FK_Passport_Gender" Association="Self.FK_Passport_Gender">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Passport" EntitySet="Passport" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
-            <End Role="ProductType" EntitySet="ProductType" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Workshop" Association="Self.FK_Product_Workshop">
-            <End Role="Workshop" EntitySet="Workshop" />
-            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Production_Material" Association="Self.FK_Production_Material">
             <End Role="Material" EntitySet="Material" />
@@ -1174,8 +1204,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdEmployee" Type="Int32" />
-          <Property Name="IdOffer" Type="Int32" />
+          <Property Name="IdRequest" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_HistoryAgentSales_Employee" FromRole="HistoryAgentSales" ToRole="Employee" />
+          <NavigationProperty Name="HistoryAgentSales1" Relationship="Self.FK_HistoryAgentSales_HistoryAgentSales" FromRole="HistoryAgentSales" ToRole="HistoryAgentSales1" />
+          <NavigationProperty Name="HistoryAgentSales2" Relationship="Self.FK_HistoryAgentSales_HistoryAgentSales" FromRole="HistoryAgentSales1" ToRole="HistoryAgentSales" />
+          <NavigationProperty Name="Request_Product" Relationship="Self.FK_HistoryAgentSales_Request_Product" FromRole="HistoryAgentSales" ToRole="Request_Product" />
         </EntityType>
         <EntityType Name="HistoryCountMaterial">
           <Key>
@@ -1204,6 +1237,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdSupplyMaterial" Type="Int32" />
           <NavigationProperty Name="SupplyMaterial" Relationship="Self.FK_HistorySupplyMaterial_SupplyMaterial" FromRole="HistorySupplyMaterial" ToRole="SupplyMaterial" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Image__2DE6D218" FromRole="Image" ToRole="Product" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -1300,7 +1341,6 @@
           <Property Name="ArticleNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MinCostForAgent" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Height" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Width" Type="Decimal" Precision="5" Scale="2" />
@@ -1310,11 +1350,12 @@
           <Property Name="QualitySertificate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="StandartNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="CountPeopleForProduction" Type="Int32" />
-          <Property Name="IdWorkshop" Type="Int32" />
+          <Property Name="Workshop" Type="Int32" />
+          <Property Name="Image" Type="Int32" />
           <NavigationProperty Name="HistoryMinCostProductForAgent" Relationship="Self.FK_HistoryMinCostProductForAgent_Product" FromRole="Product" ToRole="HistoryMinCostProductForAgent" />
-          <NavigationProperty Name="Production" Relationship="Self.FK__Productio__IdPro__25518C17" FromRole="Product" ToRole="Production" />
-          <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
-          <NavigationProperty Name="Workshop" Relationship="Self.FK_Product_Workshop" FromRole="Product" ToRole="Workshop" />
+          <NavigationProperty Name="Image1" Relationship="Self.FK__Product__Image__2DE6D218" FromRole="Product" ToRole="Image" />
+          <NavigationProperty Name="ProductType" Relationship="Self.FK__Product__IdProdu__2CF2ADDF" FromRole="Product" ToRole="ProductType" />
+          <NavigationProperty Name="Production" Relationship="Self.FK__Productio__IdPro__2EDAF651" FromRole="Product" ToRole="Production" />
           <NavigationProperty Name="Request_Product" Relationship="Self.FK_Request_Product_Product" FromRole="Product" ToRole="Request_Product" />
         </EntityType>
         <EntityType Name="Production">
@@ -1330,7 +1371,7 @@
           <Property Name="IdMaterial" Type="Int32" />
           <Property Name="IdRequest" Type="Int32" />
           <NavigationProperty Name="Material" Relationship="Self.FK_Production_Material" FromRole="Production" ToRole="Material" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Productio__IdPro__25518C17" FromRole="Production" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Productio__IdPro__2EDAF651" FromRole="Production" ToRole="Product" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Production_Request" FromRole="Production" ToRole="Request" />
         </EntityType>
         <EntityType Name="ProductType">
@@ -1339,7 +1380,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__IdProdu__2CF2ADDF" FromRole="ProductType" ToRole="Product" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -1368,6 +1409,7 @@
           <Property Name="IdRequest" Type="Int32" />
           <Property Name="IdProduct" Type="Int32" />
           <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="HistoryAgentSales" Relationship="Self.FK_HistoryAgentSales_Request_Product" FromRole="Request_Product" ToRole="HistoryAgentSales" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Request_Product_Product" FromRole="Request_Product" ToRole="Product" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Request_Product_Request" FromRole="Request_Product" ToRole="Request" />
         </EntityType>
@@ -1453,16 +1495,6 @@
           <Property Name="RoleId" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_User" FromRole="User" ToRole="Employee" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-        </EntityType>
-        <EntityType Name="Workshop">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number" Type="Int32" />
-          <Property Name="Description" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Workshop" FromRole="Workshop" ToRole="Product" />
         </EntityType>
         <Association Name="FK_Agent_PontOfSales_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
@@ -1722,6 +1754,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HistoryAgentSales_HistoryAgentSales">
+          <End Role="HistoryAgentSales" Type="Self.HistoryAgentSales" Multiplicity="1" />
+          <End Role="HistoryAgentSales1" Type="Self.HistoryAgentSales" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HistoryAgentSales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryAgentSales1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryAgentSales_Request_Product">
+          <End Role="Request_Product" Type="Self.Request_Product" Multiplicity="0..1" />
+          <End Role="HistoryAgentSales" Type="Self.HistoryAgentSales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request_Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistoryAgentSales">
+              <PropertyRef Name="IdRequest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HistoryCountMaterial_Material">
           <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
           <End Role="HistoryCountMaterial" Type="Self.HistoryCountMaterial" Multiplicity="*" />
@@ -1755,6 +1811,18 @@
             </Principal>
             <Dependent Role="HistorySupplyMaterial">
               <PropertyRef Name="IdSupplyMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__Image__2DE6D218">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Image" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1818,19 +1886,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Productio__IdPro__25518C17">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Production" Type="Self.Production" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Production">
-              <PropertyRef Name="IdProduct" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_ProductType">
+        <Association Name="FK__Product__IdProdu__2CF2ADDF">
           <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1842,15 +1898,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_Workshop">
-          <End Role="Workshop" Type="Self.Workshop" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+        <Association Name="FK__Productio__IdPro__2EDAF651">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Production" Type="Self.Production" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Workshop">
+            <Principal Role="Product">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IdWorkshop" />
+            <Dependent Role="Production">
+              <PropertyRef Name="IdProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1938,7 +1994,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DemoEnt" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DemoEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Agent_PontOfSales" EntityType="Self.Agent_PontOfSales" />
           <EntitySet Name="AgentType" EntityType="Self.AgentType" />
           <EntitySet Name="Bank" EntityType="Self.Bank" />
@@ -1954,6 +2010,7 @@
           <EntitySet Name="HistoryCountMaterial" EntityType="Self.HistoryCountMaterial" />
           <EntitySet Name="HistoryMinCostProductForAgent" EntityType="Self.HistoryMinCostProductForAgent" />
           <EntitySet Name="HistorySupplyMaterial" EntityType="Self.HistorySupplyMaterial" />
+          <EntitySet Name="Image" EntityType="Self.Image" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" />
           <EntitySet Name="Material" EntityType="Self.Material" />
           <EntitySet Name="MaterialType" EntityType="Self.MaterialType" />
@@ -1974,7 +2031,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Turnstile" EntityType="Self.Turnstile" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="Workshop" EntityType="Self.Workshop" />
           <AssociationSet Name="FK_Agent_PontOfSales_Employee" Association="Self.FK_Agent_PontOfSales_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Agent_PontOfSales" EntitySet="Agent_PontOfSales" />
@@ -2055,6 +2111,14 @@
             <End Role="Gender" EntitySet="Gender" />
             <End Role="Passport" EntitySet="Passport" />
           </AssociationSet>
+          <AssociationSet Name="FK_HistoryAgentSales_HistoryAgentSales" Association="Self.FK_HistoryAgentSales_HistoryAgentSales">
+            <End Role="HistoryAgentSales" EntitySet="HistoryAgentSales" />
+            <End Role="HistoryAgentSales1" EntitySet="HistoryAgentSales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryAgentSales_Request_Product" Association="Self.FK_HistoryAgentSales_Request_Product">
+            <End Role="Request_Product" EntitySet="Request_Product" />
+            <End Role="HistoryAgentSales" EntitySet="HistoryAgentSales" />
+          </AssociationSet>
           <AssociationSet Name="FK_HistoryCountMaterial_Material" Association="Self.FK_HistoryCountMaterial_Material">
             <End Role="Material" EntitySet="Material" />
             <End Role="HistoryCountMaterial" EntitySet="HistoryCountMaterial" />
@@ -2066,6 +2130,10 @@
           <AssociationSet Name="FK_HistorySupplyMaterial_SupplyMaterial" Association="Self.FK_HistorySupplyMaterial_SupplyMaterial">
             <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
             <End Role="HistorySupplyMaterial" EntitySet="HistorySupplyMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__Image__2DE6D218" Association="Self.FK__Product__Image__2DE6D218">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Inventory_Material" Association="Self.FK_Inventory_Material">
             <End Role="Material" EntitySet="Material" />
@@ -2087,17 +2155,13 @@
             <End Role="Material" EntitySet="Material" />
             <End Role="SupplyMaterial" EntitySet="SupplyMaterial" />
           </AssociationSet>
-          <AssociationSet Name="FK__Productio__IdPro__25518C17" Association="Self.FK__Productio__IdPro__25518C17">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Production" EntitySet="Production" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+          <AssociationSet Name="FK__Product__IdProdu__2CF2ADDF" Association="Self.FK__Product__IdProdu__2CF2ADDF">
             <End Role="ProductType" EntitySet="ProductType" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Workshop" Association="Self.FK_Product_Workshop">
-            <End Role="Workshop" EntitySet="Workshop" />
+          <AssociationSet Name="FK__Productio__IdPro__2EDAF651" Association="Self.FK__Productio__IdPro__2EDAF651">
             <End Role="Product" EntitySet="Product" />
+            <End Role="Production" EntitySet="Production" />
           </AssociationSet>
           <AssociationSet Name="FK_Request_Product_Product" Association="Self.FK_Request_Product_Product">
             <End Role="Product" EntitySet="Product" />
@@ -2133,7 +2197,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище DemoModelContainer" CdmEntityContainer="DemoEnt">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DemoModelContainer" CdmEntityContainer="DemoEntities4">
           <EntitySetMapping Name="Agent_PontOfSales">
             <EntityTypeMapping TypeName="DemoModel.Agent_PontOfSales">
               <MappingFragment StoreEntitySet="Agent_PontOfSales">
@@ -2258,7 +2322,7 @@
               <MappingFragment StoreEntitySet="HistoryAgentSales">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
-                <ScalarProperty Name="IdOffer" ColumnName="IdOffer" />
+                <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2287,6 +2351,14 @@
               <MappingFragment StoreEntitySet="HistorySupplyMaterial">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdSupplyMaterial" ColumnName="IdSupplyMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Image">
+            <EntityTypeMapping TypeName="DemoModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2377,7 +2449,6 @@
                 <ScalarProperty Name="ArticleNumber" ColumnName="ArticleNumber" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="MinCostForAgent" ColumnName="MinCostForAgent" />
                 <ScalarProperty Name="Height" ColumnName="Height" />
                 <ScalarProperty Name="Width" ColumnName="Width" />
@@ -2387,7 +2458,8 @@
                 <ScalarProperty Name="QualitySertificate" ColumnName="QualitySertificate" />
                 <ScalarProperty Name="StandartNumber" ColumnName="StandartNumber" />
                 <ScalarProperty Name="CountPeopleForProduction" ColumnName="CountPeopleForProduction" />
-                <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
+                <ScalarProperty Name="Workshop" ColumnName="Workshop" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2514,16 +2586,6 @@
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Workshop">
-            <EntityTypeMapping TypeName="DemoModel.Workshop">
-              <MappingFragment StoreEntitySet="Workshop">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

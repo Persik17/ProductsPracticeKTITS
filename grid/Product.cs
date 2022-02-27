@@ -27,7 +27,6 @@ namespace grid
         public string ArticleNumber { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Image { get; set; }
         public Nullable<decimal> MinCostForAgent { get; set; }
         public Nullable<decimal> Height { get; set; }
         public Nullable<decimal> Width { get; set; }
@@ -37,14 +36,15 @@ namespace grid
         public string QualitySertificate { get; set; }
         public string StandartNumber { get; set; }
         public Nullable<int> CountPeopleForProduction { get; set; }
-        public Nullable<int> IdWorkshop { get; set; }
+        public Nullable<int> Workshop { get; set; }
+        public Nullable<int> Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistoryMinCostProductForAgent> HistoryMinCostProductForAgent { get; set; }
+        public virtual Image Image1 { get; set; }
+        public virtual ProductType ProductType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Production> Production { get; set; }
-        public virtual ProductType ProductType { get; set; }
-        public virtual Workshop Workshop { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Request_Product> Request_Product { get; set; }
     }

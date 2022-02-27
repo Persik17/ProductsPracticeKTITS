@@ -5,62 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:grid"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" MaxHeight="500" MaxWidth="800" MinHeight="450" MinWidth="750">
+        Title="MainWindow" Height="650" Width="800" MaxHeight="700" MaxWidth="800" MinHeight="500" MinWidth="750">
     <Grid>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
-                <TextBox Margin="10" Width="300" Text="Введите текст для поиска" x:Name="TextBoxSearch" PreviewTextInput="TextBoxSearch_PreviewTextInput"/>
-                <ComboBox Margin="10" Width="150" Text="Сортировка"/>
-                <ComboBox Margin="10" Width="150" Text="Фильтрация"/>
-                <Button x:Name="endbtn" Width="20" Height="20" Click="endbtn_Click"/>
-            </StackPanel>
-            <ListView Name="ProductList" Width="650" Height="300">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderThickness="1" BorderBrush="Black">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding Image}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="50" Width="50" Margin="5"/>
-                                <StackPanel Orientation="Vertical" Width="450">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                        <TextBlock Text="{Binding ProductType.Name}" Width="60"/>
-                                        <TextBlock Text="|" Margin="5,0,5,0"/>
-                                        <TextBlock Text="{Binding Name}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="350" Height="30">
-                                        <TextBlock Text="Материалы: "/>
-                                        <ListView ItemsSource="{Binding Production}" Width="300" Height="300">
-                                            <ItemsControl.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <WrapPanel Orientation="Horizontal" />
-                                                </ItemsPanelTemplate>
-                                            </ItemsControl.ItemsPanel>
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding Material.Name}"/>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </StackPanel>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80">
-                                    <Label Content="{Binding MinCostForAgent}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <StackPanel Orientation="Horizontal" Height="50" HorizontalAlignment="Right" Margin="0,0,75,0">
-                <Button x:Name="LeftBtn" Content="&lt;" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
-                <Button x:Name="FirstBtn" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click">
-                    <Button.Content>
-                        <TextBlock><Underline>1</Underline></TextBlock>
-                    </Button.Content>
-                </Button>
-                <Button x:Name="SecondBtn" Content="2" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
-                <Button x:Name="ThirdBtn" Content="3" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
-                <Button x:Name="RightBtn" Content=">" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
-            </StackPanel>
-        </StackPanel>
+        <Image HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="50" Source="C:\Users\kraic\OneDrive\Рабочий стол\grid\grid\images\products\Лопушок.png"/>
+        <Frame Height="500" Width="750" NavigationUIVisibility="Hidden" x:Name="Nav"/>
     </Grid>
 </Window>

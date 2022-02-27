@@ -7,5 +7,91 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductPage">
-    
+
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                <TextBox Background="#CEFFF9" Margin="10" Width="300" x:Name="TextBoxSearch" PreviewTextInput="TextBoxSearch_PreviewTextInput">
+                    <TextBox.ToolTip>
+                        <Label Content="Введите текст для поиска"/>
+                    </TextBox.ToolTip>
+                </TextBox>
+                <StackPanel>
+                    <RadioButton Content="По убыванию" x:Name="UpRb"/>
+                    <RadioButton Content="По возрастанию" x:Name="DownRb"/>
+                    <HeaderedContentControl Header="Сортировка" Margin=" 10">
+                        <ComboBox Background="#CEFFF9" x:Name="SortComboBox"  Width="150" DisplayMemberPath="Name" SelectedValue="Id" SelectedItem="{Binding ProductType}" SelectionChanged="SortComboBox_SelectionChanged">
+                            <ComboBoxItem>Номер цеха</ComboBoxItem>
+                            <ComboBoxItem>Стоимость</ComboBoxItem>
+                            <ComboBoxItem>Наименование</ComboBoxItem>
+                        </ComboBox>
+                    </HeaderedContentControl>
+                </StackPanel>
+                <HeaderedContentControl Header="Фильтрация" Margin=" 10" VerticalAlignment="Bottom">
+                    <ComboBox Background="#CEFFF9" Width="150" x:Name="FiltrComboBox" SelectionChanged="FiltrComboBox_SelectionChanged">
+                        <ComboBoxItem>Все типы</ComboBoxItem>
+                        <ComboBoxItem>Три слоя</ComboBoxItem>
+                        <ComboBoxItem>Два слоя</ComboBoxItem>
+                        <ComboBoxItem>Детская</ComboBoxItem>
+                        <ComboBoxItem>Супер мягкая</ComboBoxItem>
+                        <ComboBoxItem>Один слой</ComboBoxItem>
+                    </ComboBox>
+                </HeaderedContentControl>
+            </StackPanel>
+            <ListView Background="#CEFFF9" Name="ProductList" Width="650" Height="300">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1" BorderBrush="Black">
+                            <StackPanel Orientation="Horizontal" x:Name="Item">
+                                <Image Source="{Binding Image1.Source}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="50" Width="50" Margin="5"/>
+                                <StackPanel Orientation="Vertical" Width="450">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <TextBlock Text="{Binding ProductType.Name}" Width="60"/>
+                                        <TextBlock Text="|" Margin="5,0,5,0"/>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="350" Height="30">
+                                        <TextBlock Text="Материалы: "/>
+                                        <ListView ItemsSource="{Binding Production}" Width="300" Height="300">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel Orientation="Horizontal" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Material.Name}"/>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Width="80">
+                                    <Label Content="{Binding MinCostForAgent}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="75,0,0,0" Height="40" Width="400">
+                    <Button x:Name="AddBtn" Content="Добавить" Width="80" Height="30" Click="ContentBtn_Click"/>
+                    <Button x:Name="UpdateBtn" Content="Обновить" Width="80" Height="30" Click="ContentBtn_Click"/>
+                    <Button x:Name="DeleteBtn" Content="Удалить" Width="80" Height="30" Click="ContentBtn_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="50" HorizontalAlignment="Right" Margin="0,0,75,0">
+                    <Button x:Name="LeftBtn" Content="&lt;" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
+                    <Button x:Name="FirstBtn" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click">
+                        <Button.Content>
+                            <TextBlock><Underline>1</Underline></TextBlock>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="SecondBtn" Content="2" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
+                    <Button x:Name="ThirdBtn" Content="3" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
+                    <Button x:Name="RightBtn" Content=">" BorderThickness="0" Background="White" Width="40" Height="40" Click="NavListView_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </Page>

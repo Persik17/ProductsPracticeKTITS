@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище DemoModelContainer" CdmEntityContainer="DemoEnt">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DemoModelContainer" CdmEntityContainer="DemoEntities4">
     <EntitySetMapping Name="Agent_PontOfSales">
       <EntityTypeMapping TypeName="DemoModel.Agent_PontOfSales">
         <MappingFragment StoreEntitySet="Agent_PontOfSales">
@@ -125,7 +125,7 @@
         <MappingFragment StoreEntitySet="HistoryAgentSales">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
-          <ScalarProperty Name="IdOffer" ColumnName="IdOffer" />
+          <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -154,6 +154,14 @@
         <MappingFragment StoreEntitySet="HistorySupplyMaterial">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdSupplyMaterial" ColumnName="IdSupplyMaterial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Image">
+      <EntityTypeMapping TypeName="DemoModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -244,7 +252,6 @@
           <ScalarProperty Name="ArticleNumber" ColumnName="ArticleNumber" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="MinCostForAgent" ColumnName="MinCostForAgent" />
           <ScalarProperty Name="Height" ColumnName="Height" />
           <ScalarProperty Name="Width" ColumnName="Width" />
@@ -254,7 +261,8 @@
           <ScalarProperty Name="QualitySertificate" ColumnName="QualitySertificate" />
           <ScalarProperty Name="StandartNumber" ColumnName="StandartNumber" />
           <ScalarProperty Name="CountPeopleForProduction" ColumnName="CountPeopleForProduction" />
-          <ScalarProperty Name="IdWorkshop" ColumnName="IdWorkshop" />
+          <ScalarProperty Name="Workshop" ColumnName="Workshop" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -381,16 +389,6 @@
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Workshop">
-      <EntityTypeMapping TypeName="DemoModel.Workshop">
-        <MappingFragment StoreEntitySet="Workshop">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Number" ColumnName="Number" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

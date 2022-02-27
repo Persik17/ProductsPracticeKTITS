@@ -12,18 +12,16 @@ namespace grid
     using System;
     using System.Collections.Generic;
     
-    public partial class Workshop
+    public partial class Image
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Workshop()
+        public Image()
         {
             this.Product = new HashSet<Product>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> Number { get; set; }
-        public string Description { get; set; }
-        public string Name { get; set; }
+        public string Source { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }

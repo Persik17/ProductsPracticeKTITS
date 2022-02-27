@@ -4,6 +4,21 @@
              xmlns:local="clr-namespace:grid"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Label">
+            <Setter Property="FontFamily"  Value="Gabriola"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily"  Value="Gabriola"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FontFamily"  Value="Gabriola"/>
+            <Setter Property="Background"  Value="#00CC76"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily"  Value="Gabriola"/>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="FontFamily"  Value="Gabriola"/>
+        </Style>
     </Application.Resources>
 </Application>
