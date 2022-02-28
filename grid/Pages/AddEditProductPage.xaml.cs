@@ -50,13 +50,13 @@ namespace grid.Pages
         {
             if (TypeProductComboBox.SelectedIndex != -1)
             {
-                if (Convert.ToDecimal(MinCostProductTextBox.Text.Replace(".",",")) < 0)
+                if (!string.IsNullOrEmpty(MinCostProductTextBox.Text) && Convert.ToDecimal(MinCostProductTextBox.Text.Replace(".", ",")) < 0)
                 {
+                    List<Product> article = MainWindow.ent.Product.Where(c => c.ArticleNumber == ArticleProductTextBox.Text).ToList();
 
-                    string article = MainWindow.ent.Product.ToList().Find(c => c.ArticleNumber == ArticleProductTextBox.Text).ToString();
-                    if (article == null)
+                    if (localIsEdit)
                     {
-                        if (localIsEdit)
+                        if (article.Count > 1)
                         {
                             localProd.Name = NameProductTextBox.Text;
                             localProd.Description = DescriptionProductTextBox.Text;
@@ -67,26 +67,35 @@ namespace grid.Pages
                         }
                         else
                         {
+                            MessageBox.Show("такой артикул уже существует");
+                        }
+                    }
+                    else
+                    {
+                        if (article.Count == 0)
+                        {
                             localProd.Name = NameProductTextBox.Text;
                             localProd.Description = DescriptionProductTextBox.Text;
                             localProd.ArticleNumber = ArticleProductTextBox.Text;
                             localProd.IdProductType = (TypeProductComboBox.SelectedItem as ProductType).Id;
                             localProd.MinCostForAgent = Convert.ToDecimal(MinCostProductTextBox.Text.Replace(".", ","));
                             localProd.Workshop = Convert.ToInt32(WorkshopProductTextBox.Text);
+
+                            MainWindow.ent.Product.Add(localProd);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Такой артикул уже существует");
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Такой артикул уже существует");
-                    }
+                    MainWindow.ent.SaveChanges();
+                    NavigationService.Navigate(new ProductPage());
+
                 }
                 else
                 {
                     MessageBox.Show("Цена не может быть отрицательной");
                 }
-
-                MainWindow.ent.SaveChanges();
-                NavigationService.Navigate(new ProductPage());
             }
             else
             {
@@ -96,12 +105,35 @@ namespace grid.Pages
 
         private void AddMaterialBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddMaterialPage(localProd));
+            if (TypeProductComboBox.SelectedIndex != -1)
+            {
+                if (!string.IsNullOrEmpty(MinCostProductTextBox.Text) && Convert.ToDecimal(MinCostProductTextBox.Text.Replace(".", ",")) > 0)
+                {
+                        if (!localIsEdit)
+                        {
+                            MainWindow.ent.SaveChanges();
+                        }
+                        NavigationService.Navigate(new AddMaterialPage(localProd));
+                }
+                else
+                {
+                    MessageBox.Show("Цена не может быть отрицательной");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Тип не заполнен");
+            }
         }
 
         private void AddImageBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddImagePage(localProd));
+        }
+
+        private void CountPeopleForProductionProductTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = "1234567890.,".IndexOf(e.Text) < 0;
         }
     }
 }

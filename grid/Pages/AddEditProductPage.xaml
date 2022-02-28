@@ -49,7 +49,7 @@
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Margin="5,0,5,5">
                         <Label Content="Кол-во людей для производства"/>
-                        <TextBox Background="#CEFFF9" x:Name="CountPeopleForProductionProductTextBox" Text="{Binding CountPeopleForProduction}"/>
+                        <TextBox Background="#CEFFF9" x:Name="CountPeopleForProductionProductTextBox" Text="{Binding CountPeopleForProduction}" PreviewTextInput="CountPeopleForProductionProductTextBox_PreviewTextInput"/>
                     </StackPanel>
                     <StackPanel Margin="5,0,5,5">
                         <Label Content="Номер цеха"/>
