@@ -209,11 +209,11 @@ namespace grid.Pages
         {
             if (TextBoxSearch.Text.Length != 0 && FiltrComboBox.SelectedIndex > 0)
             {
-                ProductList.ItemsSource = MainWindow.ent.Product.Where(c => (c.Name.Contains(TextBoxSearch.Text) || c.Description.Contains(TextBoxSearch.Text)) && c.ProductType.Name == FiltrComboBox.Text).ToList();
+                ProductList.ItemsSource = MainWindow.ent.Product.Where(c => (c.Name.Contains(TextBoxSearch.Text) || c.Description.Contains(TextBoxSearch.Text)) && c.ProductType.Id == FiltrComboBox.SelectedIndex).ToList();
             }
             else if (TextBoxSearch.Text.Length == 0 && FiltrComboBox.SelectedIndex > 0)
             {
-                ProductList.ItemsSource = MainWindow.ent.Product.Where(c => c.ProductType.Name == FiltrComboBox.Text).ToList();
+                ProductList.ItemsSource = MainWindow.ent.Product.Where(c => c.ProductType.Id == FiltrComboBox.SelectedIndex).ToList();
             }
             else if (TextBoxSearch.Text.Length != 0 && (FiltrComboBox.SelectedIndex == -1 || FiltrComboBox.SelectedIndex == 0))
             {
